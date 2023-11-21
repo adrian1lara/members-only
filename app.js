@@ -13,6 +13,23 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+const userDB = process.env.DB_USER
+const passDB = process.env.DB_PASS
+const database = process.env.DATABASE
+
+const url = `mongodb+srv://${userDB}:${passDB}@cluster0.uq02s3f.mongodb.net/${database}?retryWrites=true&w=majority`
+
+async function main() {
+  try {
+    await mongoose.connect(url)
+  } catch (error) {
+    console.error(error)
+  }
+
+}
+
+main().catch(err => console.log(err))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
