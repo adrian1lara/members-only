@@ -9,19 +9,30 @@
   <body>
     <h1>Sign up</h1>
     <form action="" method="POST">
-      <label for="name">Name</label>
-      <input type="text" name="name" />
-      
-      <label for="lastname">Lastname</label>
-      <input type="text" name="lastname" />
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" 
+        class="form-control" />
+      </div>
 
-      <label for="email">Email</label>
-      <input type="email" name="email" />
+      <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" name="lastname" 
+        class="form-control" />
+      </div>
 
-      <label for="password">Password</label>
-      <input type="password" name="password" />
-
-      <button type="submit">Sign-up</button>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email"  
+        class="form-control" />
+      </div>
+            
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" 
+        class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary">Sign-up</button>
     </form>
   </body>
 </html>
