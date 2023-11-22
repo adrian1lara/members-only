@@ -9,6 +9,7 @@ const dotenv = require('dotenv')
 const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const bcrypt = require('bcryptjs')
 const User = require('./models/user')
 
 dotenv.config()
@@ -64,7 +65,8 @@ passport.use(
           return done(null, false, { message: "Incorrect email" })
         }
 
-        if (user.password !== password) {
+        const match = await bcrypt.compare(password, user.password)
+        if (!match) {
           return done(null, false, { message: "Incorrect password" })
         }
 
