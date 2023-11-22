@@ -10,7 +10,7 @@ exports.create_user_post = [
   body('name', 'Name must not be empty.')
     .trim()
     .isLength({ min: 3 })
-    .escape,
+    .escape(),
   body('lastname', 'Lastname must not be empty.')
     .trim()
     .isLength({ min: 3 })
@@ -48,7 +48,7 @@ exports.create_user_post = [
 
       await user.save()
 
-      res.redirect("/")
+      res.redirect("/log-in")
 
     }
   })
