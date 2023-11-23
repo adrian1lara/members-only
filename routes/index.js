@@ -3,10 +3,16 @@ const passport = require('passport')
 const router = express.Router();
 
 const userController = require('../controllers/userController')
+const messageController = require('../controllers/messageController')
 
 /* get home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Members Only', user: req.user });
+
+  res.render('index', {
+    title: 'Members Only',
+    user: req.user,
+
+  });
 });
 
 // get sign-up page
@@ -32,6 +38,11 @@ router.post(
   })
 );
 
+
+router.get('/message', messageController.message_create_get)
+
+router.post('/message', messageController.message_create_post)
+
 //handle log out
 router.get("/log-out", (req, res, next) => {
   req.logout((err) => {
@@ -41,7 +52,6 @@ router.get("/log-out", (req, res, next) => {
     res.redirect("/")
   })
 })
-
 
 
 
