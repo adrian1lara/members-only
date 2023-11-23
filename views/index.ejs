@@ -31,6 +31,18 @@
         </div>
       </div>
     </nav>
+    <div>
+      <h2>Messages</h2>
+      <div>
+        <%messages.forEach(function(message) { %>
+        <p><%=message.title%></p>
+        <p><%=message.message%></p>
+        <p><%=user.fullname%></p>
+        <p><%=message.added%></p>
+        <%})%>
+
+      </div>
+    </div>
     <% } else { %>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
