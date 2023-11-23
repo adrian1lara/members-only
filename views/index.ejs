@@ -31,14 +31,28 @@
         </div>
       </div>
     </nav>
-    <div>
-      <h2>Messages</h2>
-      <div>
+    <div class="container">
+      <div class="container-lg">
+      <h2 class='text-center'>Messages</h2>
+      <a href='/message' class="btn btn-outline-primary">write your message</a>
+      </div>
+        <div >
         <%messages.forEach(function(message) { %>
-        <p><%=message.title%></p>
-        <p><%=message.message%></p>
-        <p><%= message.user.name %> <%= message.user.lastname %></p>
-        <p><%=message.added%></p>
+        
+          <div class="card w-100 p-2">
+          <h5 class="card-header"><%=message.title%></h5>
+          <div class="card-body">
+            <p class="card-text"><%=message.message%></p>
+            
+          </div> 
+          <div class="card-footer">
+            <p><%= message.user.name %> <%= message.user.lastname %></p>
+
+            <p><%=message.added%></p> 
+          </div>
+          </div>
+          
+        
         <%})%>
 
       </div>
@@ -63,11 +77,32 @@
           </ul>
           <div class="d-flex">
             <a href="/log-in" class="btn btn-outline-success">Login</a>
-            <a href="/sign-up" class="btn btn-outline-success">sign-up</a>
+            <a href="/sign-up" class="btn btn-outline-success ms-2">sign-up</a>
           </div>
         </div>
       </div>
     </nav>
+    <div class="container">
+      <div class="container-lg">
+        <h2>Messages</h2>
+        <p>Get logged to write your message</p>
+      </div>
+      
+      <div>
+        <%messages.forEach(function(message) { %>
+        <div class="card w-100 p-2">
+          <h5 class="card-header"><%=message.title%></h5>
+          <div class="card-body"> 
+            <p><%=message.message%></p>
+          </div>
+          <div class="card-footer">
+            <p>Become a member to see the owner</p>
+          </div>
+                  
+        </div>
+        <%})%>
+      </div>
+    </div>
     <% } %>
 
     <script src="/javascripts/dom.js"> 
