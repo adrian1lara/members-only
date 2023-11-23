@@ -10,7 +10,9 @@ router.get('/', function(req, res, next) {
 });
 
 // get sign-up page
-router.get("/sign-up", (req, res) => res.render("sign-up-form"))
+router.get("/sign-up", (req, res) => res.render("sign-up-form", {
+  errors: ''
+}))
 
 // handle post request sign-up
 router.post("/sign-up", userController.create_user_post)
