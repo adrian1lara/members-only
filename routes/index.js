@@ -2,11 +2,11 @@ const express = require('express');
 const passport = require('passport')
 const router = express.Router();
 
-const userController = require('../controllers/usercontroller')
+const userController = require('../controllers/userController')
 
 /* get home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'express' });
+  res.render('index', { title: 'Members Only', user: req.user });
 });
 
 // get sign-up page
@@ -31,6 +31,18 @@ router.post(
     failureFlash: true,
   })
 );
+
+//handle log out
+router.get("/log-out", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err)
+    }
+    res.redirect("/")
+  })
+})
+
+
 
 
 
