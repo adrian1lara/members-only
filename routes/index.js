@@ -8,7 +8,7 @@ const messageController = require('../controllers/messageController')
 const Message = require('../models/message')
 /* get home page. */
 router.get('/', asyncHandler(async (req, res, next) => {
-  const allMessages = await Message.find().exec()
+  const allMessages = await Message.find().populate('user', 'name lastname').exec()
 
   res.render('index', {
     title: 'Members Only',
