@@ -37,7 +37,7 @@
         <%messages.forEach(function(message) { %>
         <p><%=message.title%></p>
         <p><%=message.message%></p>
-        <p><%=user.fullname%></p>
+        <p><%= message.user.name %> <%= message.user.lastname %></p>
         <p><%=message.added%></p>
         <%})%>
 
