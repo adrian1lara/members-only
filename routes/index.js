@@ -1,19 +1,22 @@
 const express = require('express');
 const passport = require('passport')
+const asyncHandler = require('express-async-handler')
 const router = express.Router();
 
 const userController = require('../controllers/userController')
 const messageController = require('../controllers/messageController')
-
+const Message = require('../models/message')
 /* get home page. */
-router.get('/', function(req, res, next) {
+router.get('/', asyncHandler(async (req, res, next) => {
+  const allMessages = await Message.find().exec()
 
   res.render('index', {
     title: 'Members Only',
     user: req.user,
-
-  });
-});
+    messages: allMessages
+  })
+}
+));
 
 // get sign-up page
 router.get("/sign-up", (req, res) => res.render("sign-up-form", {
