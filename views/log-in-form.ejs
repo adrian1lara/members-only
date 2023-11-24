@@ -8,8 +8,10 @@
   </head>
 <body>  
 
-  <h1>Log in</h1>
-  <form action="/log-in" method="POST">
+      <div class="allboxes">
+
+      <h1 class="text-center text-success my-3">Log in</h1>
+      <form action="/log-in" method="POST">
       <div class="form-group">
         <label for="email">Email</label>
         <input name="email" placeholder="youremail@email.com" type="email" 
@@ -22,7 +24,7 @@
         class="form-control"/>
       </div>
 
-       <button type="submit" class="btn btn-primary">Log In</button>
+       <button type="submit" class="btn btn-success my-2">Log In</button>
   </form>
   <!-- Display flash messages -->
   <% if (messages.error) { %>
@@ -30,5 +32,7 @@
       <%= messages.error %>
     </div>
   <% } %>
-</body>
+
+    </div>
+  </body>
 </html>
