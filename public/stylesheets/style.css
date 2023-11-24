@@ -10,3 +10,20 @@
   justify-content: center;
   align-items: center;
 }
+
+.allboxes {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px;
+  justify-content: center;
+  height: 80vh;
+  align-items: center; 
+}
+
+.allboxes input {
+  min-width: 350px;
+}
+
+
