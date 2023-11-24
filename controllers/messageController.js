@@ -7,10 +7,16 @@ const Message = require('../models/message')
 
 // get create form 
 exports.message_create_get = (req, res, next) => {
-  res.render('message-form', {
-    title: 'Create Form',
-    errors: ''
-  })
+
+  if (req.user) {
+    res.render('message-form', {
+      title: 'Create Form',
+      errors: ''
+    })
+
+  } else {
+    res.redirect('/log-in')
+  }
 }
 
 
