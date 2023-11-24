@@ -1,7 +1,24 @@
+require('dotenv').config()
+const mongoose = require('mongoose')
 const express = require('express');
 const passport = require('passport')
 const asyncHandler = require('express-async-handler')
 const router = express.Router();
+
+
+
+const userDB = process.env.DB_USER
+const passDB = process.env.DB_PASS
+const database = process.env.DATABASE
+
+const url = `mongodb+srv://${userDB}:${passDB}@cluster0.uq02s3f.mongodb.net/${database}?retryWrites=true&w=majority`
+
+const main = asyncHandler(async () => {
+  await mongoose.connect(url)
+})
+
+main().catch(err => console.log(err))
+
 
 const userController = require('../controllers/userController')
 const messageController = require('../controllers/messageController')
