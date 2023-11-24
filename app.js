@@ -1,22 +1,20 @@
 const createError = require('http-errors');
+const dotenv = require('dotenv')
+const mongoose = require('mongoose')
 const express = require('express');
+const asyncHandler = require('express-async-handler')
 const flash = require('express-flash');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
 const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcryptjs')
 const User = require('./models/user')
 
+
 dotenv.config()
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-
 
 const userDB = process.env.DB_USER
 const passDB = process.env.DB_PASS
@@ -25,16 +23,15 @@ const secretKey = process.env.SECRET_KEY
 
 const url = `mongodb+srv://${userDB}:${passDB}@cluster0.uq02s3f.mongodb.net/${database}?retryWrites=true&w=majority`
 
-async function main() {
-  try {
-    await mongoose.connect(url)
-  } catch (error) {
-    console.error(error)
-  }
-
-}
+const main = asyncHandler(async () => {
+  await mongoose.connect(url)
+})
 
 main().catch(err => console.log(err))
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
 
 
 const app = express();
