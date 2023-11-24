@@ -16,7 +16,18 @@ const User = require('./models/user')
 
 dotenv.config()
 
+const userDB = process.env.DB_USER
+const passDB = process.env.DB_PASS
+const database = process.env.DATABASE
 const secretKey = process.env.SECRET_KEY
+
+const url = `mongodb+srv://${userDB}:${passDB}@cluster0.uq02s3f.mongodb.net/${database}?retryWrites=true&w=majority`
+
+const main = asyncHandler(async () => {
+  await mongoose.connect(url)
+})
+
+main().catch(err => console.log(err))
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
