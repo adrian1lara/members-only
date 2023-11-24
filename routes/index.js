@@ -8,7 +8,7 @@ const messageController = require('../controllers/messageController')
 const Message = require('../models/message')
 /* get home page. */
 router.get('/', asyncHandler(async (req, res, next) => {
-  const allMessages = await Message.find().populate('user', 'name lastname').exec()
+  const allMessages = await Message.find().populate('user', 'name lastname url membership').exec()
 
   res.render('index', {
     title: 'Members Only',
@@ -40,6 +40,10 @@ router.post(
     failureFlash: true,
   })
 );
+
+router.get('/user/:id/member', userController.become_member_get)
+
+router.post('/user/:id/member', userController.become_member_post)
 
 
 router.get('/message', messageController.message_create_get)
